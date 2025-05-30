@@ -5,7 +5,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.List;
 
-@Component
+//@Component
 public class JPARepositoryDemo implements CommandLineRunner {
 
     private final PatientRepository patientRepository;
