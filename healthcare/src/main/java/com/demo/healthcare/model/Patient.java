@@ -14,12 +14,24 @@ public class Patient {
     @JoinColumn(name = "medical_record_id")
     private MedicalRecord medicalRecord;
 
+    @ManyToOne
+    @JoinColumn(name = "doctor_id")
+    private Doctor doctor;
+
     public Patient() {
     }
 
     public Patient(String name, int age) {
         this.name = name;
         this.age = age;
+    }
+
+    public Doctor getDoctor() {
+        return doctor;
+    }
+
+    public void setDoctor(Doctor doctor) {
+        this.doctor = doctor;
     }
 
     public MedicalRecord getMedicalRecord() {

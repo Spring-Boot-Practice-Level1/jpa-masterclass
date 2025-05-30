@@ -1,7 +1,9 @@
 package com.demo.healthcare.demo;
 
+import com.demo.healthcare.model.Doctor;
 import com.demo.healthcare.model.MedicalRecord;
 import com.demo.healthcare.model.Patient;
+import com.demo.healthcare.repository.DoctorRepository;
 import com.demo.healthcare.repository.MedicalRecordRepository;
 import com.demo.healthcare.repository.PatientRepository;
 import org.springframework.boot.CommandLineRunner;
@@ -12,28 +14,48 @@ public class JPARelationshipsDemo implements CommandLineRunner {
 
     private PatientRepository patientRepository;
     private MedicalRecordRepository medicalRecordRepository;
+    private DoctorRepository doctorRepository;
 
-    public JPARelationshipsDemo(PatientRepository patientRepository, MedicalRecordRepository medicalRecordRepository) {
+    public JPARelationshipsDemo(PatientRepository patientRepository,
+                                MedicalRecordRepository medicalRecordRepository,
+                                DoctorRepository doctorRepository) {
         this.patientRepository = patientRepository;
         this.medicalRecordRepository = medicalRecordRepository;
+        this.doctorRepository = doctorRepository;
     }
 
     @Override
     public void run(String... args) throws Exception {
-        MedicalRecord medicalRecord = new MedicalRecord("Fever");
-        medicalRecordRepository.save(medicalRecord);
+//        ONE TO ONE
+//        MedicalRecord medicalRecord = new MedicalRecord("Fever");
+//        medicalRecordRepository.save(medicalRecord);
+//
+//        Patient patient = new Patient("John Doe" , 30);
+//        patient.setMedicalRecord(medicalRecord);
+//        patientRepository.save(patient);
+//
+//        // ACCESSING DATA
+//        System.out.println("Patient's Record: "
+//                + patient.getMedicalRecord().getDiagnosis());
+//
+//        MedicalRecord fetchedMedicalRecord = medicalRecordRepository
+//                .findById(medicalRecord.getId()).orElseThrow();
+//        System.out.println("Record's Patient: "
+//                + fetchedMedicalRecord.getPatient().getName());
 
-        Patient patient = new Patient("John Doe" , 30);
-        patient.setMedicalRecord(medicalRecord);
-        patientRepository.save(patient);
+        // MANY TO ONE AND ONE TO MANY
+        Doctor doctor1 = new Doctor("Dr. Alex");
+        doctorRepository.save(doctor1);
 
-        // ACCESSING DATA
-        System.out.println("Patient's Record: "
-                + patient.getMedicalRecord().getDiagnosis());
+        Doctor doctor2 = new Doctor("Dr. Alyne");
+        doctorRepository.save(doctor2);
 
-        MedicalRecord fetchedMedicalRecord = medicalRecordRepository
-                .findById(medicalRecord.getId()).orElseThrow();
-        System.out.println("Record's Patient: "
-                + fetchedMedicalRecord.getPatient().getName());
+        Patient patient1 = new Patient("John Doe" , 30);
+        patient1.setDoctor(doctor1);
+        patientRepository.save(patient1);
+
+        Patient patient2 = new Patient("Jane" , 33);
+        patient2.setDoctor(doctor1);
+        patientRepository.save(patient2);
     }
 }
