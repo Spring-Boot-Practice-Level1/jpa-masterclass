@@ -9,6 +9,8 @@ import com.demo.healthcare.repository.PatientRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 @Component
 public class JPARelationshipsDemo implements CommandLineRunner {
 
@@ -57,5 +59,11 @@ public class JPARelationshipsDemo implements CommandLineRunner {
         Patient patient2 = new Patient("Jane" , 33);
         patient2.setDoctor(doctor1);
         patientRepository.save(patient2);
+
+        doctor1.setPatients(List.of(patient1, patient2));
+
+        System.out.println(patient1.getDoctor().getName());
+
+        System.out.println(doctor1.getPatients().get(0).getName());
     }
 }
