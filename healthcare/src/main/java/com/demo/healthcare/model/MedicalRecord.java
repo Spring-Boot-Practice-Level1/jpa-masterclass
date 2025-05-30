@@ -9,9 +9,9 @@ public class MedicalRecord {
     private Long id;
 
     private String diagnosis;
-//
-//    @OneToOne
-//    private Patient patient;
+
+    @OneToOne(mappedBy = "medicalRecord")
+    private Patient patient;
 
 
     public MedicalRecord() {
@@ -19,6 +19,15 @@ public class MedicalRecord {
 
     public MedicalRecord(String diagnosis) {
         this.diagnosis = diagnosis;
+    }
+
+
+    public Patient getPatient() {
+        return patient;
+    }
+
+    public void setPatient(Patient patient) {
+        this.patient = patient;
     }
 
     public Long getId() {

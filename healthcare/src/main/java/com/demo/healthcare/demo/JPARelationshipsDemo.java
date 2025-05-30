@@ -26,5 +26,14 @@ public class JPARelationshipsDemo implements CommandLineRunner {
         Patient patient = new Patient("John Doe" , 30);
         patient.setMedicalRecord(medicalRecord);
         patientRepository.save(patient);
+
+        // ACCESSING DATA
+        System.out.println("Patient's Record: "
+                + patient.getMedicalRecord().getDiagnosis());
+
+        MedicalRecord fetchedMedicalRecord = medicalRecordRepository
+                .findById(medicalRecord.getId()).orElseThrow();
+        System.out.println("Record's Patient: "
+                + fetchedMedicalRecord.getPatient().getName());
     }
 }
