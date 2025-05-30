@@ -14,7 +14,7 @@ public class Patient {
     @JoinColumn(name = "medical_record_id")
     private MedicalRecord medicalRecord;
 
-    @ManyToOne
+    @ManyToOne( cascade = CascadeType.PERSIST)
     @JoinColumn(name = "doctor_id")
     private Doctor doctor;
 

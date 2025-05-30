@@ -12,7 +12,7 @@ public class Doctor {
 
     private String name;
 
-    @OneToMany(mappedBy = "doctor")
+    @OneToMany(mappedBy = "doctor", cascade = CascadeType.REMOVE)
     private List<Patient> patients;
 
     public Doctor() {
