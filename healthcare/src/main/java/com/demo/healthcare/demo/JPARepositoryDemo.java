@@ -1,9 +1,8 @@
-package com.demo.healthcare;
+package com.demo.healthcare.demo;
 
+import com.demo.healthcare.model.Patient;
+import com.demo.healthcare.repository.PatientRepository;
 import org.springframework.boot.CommandLineRunner;
-import org.springframework.stereotype.Component;
-
-import java.util.List;
 
 //@Component
 public class JPARepositoryDemo implements CommandLineRunner {

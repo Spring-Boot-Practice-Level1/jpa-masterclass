@@ -1,12 +1,13 @@
-package com.demo.healthcare;
+package com.demo.healthcare.demo;
 
+import com.demo.healthcare.model.Patient;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.transaction.Transactional;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
-@Component
+//@Component
 public class JPAEntityManagerDemo implements CommandLineRunner {
 
     @PersistenceContext

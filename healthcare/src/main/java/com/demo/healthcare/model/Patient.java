@@ -1,9 +1,6 @@
-package com.demo.healthcare;
+package com.demo.healthcare.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
 public class Patient {
@@ -13,12 +10,24 @@ public class Patient {
     private String name;
     private int age;
 
+    @OneToOne
+    @JoinColumn(name = "medical_record_id")
+    private MedicalRecord medicalRecord;
+
     public Patient() {
     }
 
     public Patient(String name, int age) {
         this.name = name;
         this.age = age;
+    }
+
+    public MedicalRecord getMedicalRecord() {
+        return medicalRecord;
+    }
+
+    public void setMedicalRecord(MedicalRecord medicalRecord) {
+        this.medicalRecord = medicalRecord;
     }
 
     public Long getId() {
