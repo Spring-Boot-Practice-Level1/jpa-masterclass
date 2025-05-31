@@ -46,7 +46,22 @@ public class CascadingDemo implements CommandLineRunner {
         doctor1.setPatients(List.of(patient1, patient2));
 
 //        CascadeType.REMOVE
-        Doctor doctor = doctorRepository.findById(1L).get();
-        doctorRepository.delete(doctor);
+//        Doctor doctor = doctorRepository.findById(1L).get();
+//        doctorRepository.delete(doctor);
+
+//        CascadeType.MERGE
+//        System.out.println("====CascadeType.MERGE======");
+//        Doctor managedDoctor = doctorRepository.findById(1L)
+//                .orElseThrow();
+//        managedDoctor.setName("Dr. Updated.");
+//
+//        Patient managedPatient = patientRepository.findById(1L)
+//                .orElseThrow();
+//        managedPatient.setAge(44);
+//
+//        managedDoctor.setPatients(List.of(managedPatient));
+//
+//        doctorRepository.save(managedDoctor);
+
     }
 }
