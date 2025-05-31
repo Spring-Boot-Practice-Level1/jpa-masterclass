@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.List;
 
-@Component
+//@Component
 public class CascadingDemo implements CommandLineRunner {
     private PatientRepository patientRepository;
     private MedicalRecordRepository medicalRecordRepository;
