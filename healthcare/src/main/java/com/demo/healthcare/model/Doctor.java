@@ -12,7 +12,8 @@ public class Doctor {
 
     private String name;
 
-    @OneToMany(mappedBy = "doctor", cascade = {CascadeType.REMOVE, CascadeType.MERGE})
+    @OneToMany(mappedBy = "doctor",
+            cascade = CascadeType.ALL)
     private List<Patient> patients;
 
     public Doctor() {
