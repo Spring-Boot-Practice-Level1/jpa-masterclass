@@ -15,6 +15,9 @@ public class Medicine {
     @ManyToMany(mappedBy = "medicines")
     private List<Prescription> prescriptions;
 
+    public Medicine() {
+    }
+
     public Medicine(String name) {
         this.name = name;
     }

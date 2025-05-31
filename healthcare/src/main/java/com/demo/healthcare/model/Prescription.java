@@ -10,7 +10,7 @@ public class Prescription {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "prescription_medicine",
             joinColumns = @JoinColumn(name = "prescription_id"),

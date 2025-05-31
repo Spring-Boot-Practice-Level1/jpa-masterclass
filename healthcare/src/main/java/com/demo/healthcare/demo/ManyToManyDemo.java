@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.List;
 
-@Component
+//@Component
 public class ManyToManyDemo implements CommandLineRunner {
 
     private final MedicineRepository medicineRepository;
@@ -36,5 +36,7 @@ public class ManyToManyDemo implements CommandLineRunner {
 
         prescriptionRepository.saveAll(List.of(p1, p2));
 
+        System.out.println("=== FetchType Demo ===");
+        prescriptionRepository.findById(1L);
     }
 }
