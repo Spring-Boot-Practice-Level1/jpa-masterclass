@@ -4,51 +4,14 @@ import jakarta.persistence.*;
 
 import java.util.List;
 
-/*
-
-@Table(
-    name = "patients", // The name of the table in the database.
-    By default, JPA would use the class name (e.g., "Patient"),
-    but here we're explicitly naming it "patients".
-
-    catalog = "hospital_db", // Optional.
-    Refers to the catalog (think of it as a database group).
-    Rarely used unless your DB uses catalogs.
-
-    schema = "public", // Refers to the schema under which the table resides
-    (e.g., "public", "admin", etc.). Useful in PostgreSQL or Oracle DBs.
-
-    uniqueConstraints = {
-        @UniqueConstraint(columnNames = {"email"}),
-        // Ensures that the 'email' column must have unique values across
-        all rows (i.e., no two patients can have the same email).
-
-        @UniqueConstraint(columnNames = {"national_id"})
-        // Similarly, ensures 'national_id' is unique — useful for real-world
-        identifiers like SSNs, Aadhaar, etc.
-    },
-
-    indexes = {
-        @Index(name = "idx_email", columnList = "email"),
-        // Creates a named index "idx_email" on the 'email' column to
-        improve search/query performance.
-
-        @Index(name = "idx_created_at", columnList = "created_at DESC")
-        // Adds an index on the 'created_at' column in descending order —
-        useful if you often sort patients by most recent creation.
-    }
-)
-
-
- */
-
-
 @Entity
 @Table(name = "new_patients")
 public class Patient {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column(name = "patient_name")
     private String name;
     private int age;
 
