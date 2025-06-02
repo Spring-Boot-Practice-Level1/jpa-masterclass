@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.List;
 
-@Component
+//@Component
 public class FetchTypeDemoRunner implements CommandLineRunner {
 
     private final DoctorRepository doctorRepository;

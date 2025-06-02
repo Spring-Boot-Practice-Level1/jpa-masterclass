@@ -10,6 +10,9 @@ public class Patient {
     private String name;
     private int age;
 
+    @Embedded
+    private Address address;
+
     @OneToOne (cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "medical_record_id")
     private MedicalRecord medicalRecord;
@@ -64,5 +67,13 @@ public class Patient {
 
     public void setAge(int age) {
         this.age = age;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
     }
 }
