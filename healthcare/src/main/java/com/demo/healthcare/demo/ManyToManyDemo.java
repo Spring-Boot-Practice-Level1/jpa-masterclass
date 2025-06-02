@@ -37,6 +37,6 @@ public class ManyToManyDemo implements CommandLineRunner {
         prescriptionRepository.saveAll(List.of(p1, p2));
 
         System.out.println("=== FetchType Demo ===");
-        prescriptionRepository.findById(1L);
+//        prescriptionRepository.findById(1L);
     }
 }

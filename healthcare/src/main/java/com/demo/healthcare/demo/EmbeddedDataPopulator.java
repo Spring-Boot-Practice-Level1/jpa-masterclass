@@ -7,7 +7,7 @@ import com.demo.healthcare.repository.PatientRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
-@Component
+//@Component
 public class EmbeddedDataPopulator implements CommandLineRunner {
 
     private final DoctorRepository doctorRepository;
