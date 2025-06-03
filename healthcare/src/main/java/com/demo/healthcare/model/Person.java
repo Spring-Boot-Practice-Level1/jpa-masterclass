@@ -2,7 +2,8 @@ package com.demo.healthcare.model;
 
 import jakarta.persistence.*;
 
-@Inheritance(strategy = InheritanceType.JOINED)
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name = "person_type")
 @Entity
 public class Person {
     @Id
