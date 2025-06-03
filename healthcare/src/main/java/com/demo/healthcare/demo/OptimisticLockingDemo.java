@@ -8,7 +8,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.orm.ObjectOptimisticLockingFailureException;
 import org.springframework.stereotype.Component;
 
-@Component
+//@Component
 public class OptimisticLockingDemo implements CommandLineRunner {
 
     private final PatientRepository patientRepository;

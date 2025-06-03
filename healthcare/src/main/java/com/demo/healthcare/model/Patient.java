@@ -8,15 +8,8 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
-@Table(name = "new_patients")
-public class Patient {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
-    @Column(name = "patient_name")
-    private String name;
-    private int age;
+//@Table(name = "new_patients")
+public class Patient extends Person{
 
     @Embedded
     private Address address;
@@ -49,15 +42,20 @@ public class Patient {
     @UpdateTimestamp
     private LocalDateTime updatedAt;
 
-    @Version
-    private int version;
+//    @Version
+//    private int version;
 
     public Patient() {
     }
 
+    public Patient(String name, int age, String email, Gender gender) {
+        super(name, age, email);
+        this.gender = gender;
+    }
+
     public Patient(String name, int age) {
-        this.name = name;
-        this.age = age;
+//        this.name = name;
+//        this.age = age;
         this.ageGroup = calculateAgeGroup(age);
     }
 
@@ -93,28 +91,28 @@ public class Patient {
         this.medicalRecord = medicalRecord;
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public int getAge() {
-        return age;
-    }
+//    public Long getId() {
+//        return id;
+//    }
+//
+//    public void setId(Long id) {
+//        this.id = id;
+//    }
+//
+//    public String getName() {
+//        return name;
+//    }
+//
+//    public void setName(String name) {
+//        this.name = name;
+//    }
+//
+//    public int getAge() {
+//        return age;
+//    }
 
     public void setAge(int age) {
-        this.age = age;
+//        this.age = age;
         this.ageGroup = calculateAgeGroup(age);
     }
 
