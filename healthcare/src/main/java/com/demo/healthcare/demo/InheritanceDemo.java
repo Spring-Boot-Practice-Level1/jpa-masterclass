@@ -13,13 +13,13 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 
 @Component
-public class InheritanceJoinedTableDemo implements CommandLineRunner {
+public class InheritanceDemo implements CommandLineRunner {
 
     private DoctorRepository doctorRepository;
     private PatientRepository patientRepository;
     private PersonRepository personRepository;
 
-    public InheritanceJoinedTableDemo(DoctorRepository doctorRepository, PatientRepository patientRepository, PersonRepository personRepository) {
+    public InheritanceDemo(DoctorRepository doctorRepository, PatientRepository patientRepository, PersonRepository personRepository) {
         this.doctorRepository = doctorRepository;
         this.patientRepository = patientRepository;
         this.personRepository = personRepository;
