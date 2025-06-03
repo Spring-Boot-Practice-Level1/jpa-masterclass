@@ -49,6 +49,9 @@ public class Patient {
     @UpdateTimestamp
     private LocalDateTime updatedAt;
 
+    @Version
+    private int version;
+
     public Patient() {
     }
 
