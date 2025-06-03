@@ -18,6 +18,12 @@ public class Patient {
     @Embedded
     private Address address;
 
+    @Enumerated(EnumType.STRING)
+    private Gender gender;
+
+    @Transient
+    private String ageGroup;
+
 //    @Lob
 //    private byte[] profilePicture;
     // CLOB - Character Large Object
@@ -40,13 +46,22 @@ public class Patient {
     public Patient(String name, int age) {
         this.name = name;
         this.age = age;
+        this.ageGroup = calculateAgeGroup(age);
     }
 
     public Doctor getDoctor() {
         return doctor;
     }
 
-//    public byte[] getProfilePicture() {
+    public Gender getGender() {
+        return gender;
+    }
+
+    public void setGender(Gender gender) {
+        this.gender = gender;
+    }
+
+    //    public byte[] getProfilePicture() {
 //        return profilePicture;
 //    }
 //
@@ -88,6 +103,7 @@ public class Patient {
 
     public void setAge(int age) {
         this.age = age;
+        this.ageGroup = calculateAgeGroup(age);
     }
 
     public Address getAddress() {
@@ -96,5 +112,12 @@ public class Patient {
 
     public void setAddress(Address address) {
         this.address = address;
+    }
+
+    private String calculateAgeGroup(int age) {
+        if (age <= 12) return "Child";
+        else if (age <= 19) return "Teen";
+        else if (age <= 59) return "Adult";
+        else return "Senior";
     }
 }

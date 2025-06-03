@@ -35,6 +35,7 @@ public class CompositeKeyDemo implements CommandLineRunner {
         Patient alice = new Patient("Alice Johnson", 30);
 //        byte[] imageData = Files.readAllBytes(new ClassPathResource("/images/img.png").getFile().toPath());
 //        alice.setProfilePicture(imageData);
+        alice.setGender(Gender.MALE);
         alice.setDoctor(drSmith);
 
         MedicalRecord aliceRecord = new MedicalRecord("Allergic to penicillin");
