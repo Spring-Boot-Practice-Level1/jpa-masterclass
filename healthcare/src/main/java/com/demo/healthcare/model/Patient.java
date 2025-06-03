@@ -18,6 +18,11 @@ public class Patient {
     @Embedded
     private Address address;
 
+//    @Lob
+//    private byte[] profilePicture;
+    // CLOB - Character Large Object
+//    BLOB - Binary Large Object
+
     @OneToOne (cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "medical_record_id")
     private MedicalRecord medicalRecord;
@@ -40,6 +45,14 @@ public class Patient {
     public Doctor getDoctor() {
         return doctor;
     }
+
+//    public byte[] getProfilePicture() {
+//        return profilePicture;
+//    }
+//
+//    public void setProfilePicture(byte[] profilePicture) {
+//        this.profilePicture = profilePicture;
+//    }
 
     public void setDoctor(Doctor doctor) {
         this.doctor = doctor;
