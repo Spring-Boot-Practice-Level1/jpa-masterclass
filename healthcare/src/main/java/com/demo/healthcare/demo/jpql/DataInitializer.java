@@ -15,22 +15,26 @@ import org.springframework.stereotype.Component;
 
 import java.util.List;
 
-//@Component
-public class BasicJPQLQueries implements CommandLineRunner {
+@Component
+public class DataInitializer implements CommandLineRunner {
 
     private DoctorRepository doctorRepository;
     private PatientRepository patientRepository;
     private PersonRepository personRepository;
     private MedicalRecordRepository medicalRecordRepository;
+    private QueryParameters queryParameters;
+    private LearnQueries learnQueries;
 
     @PersistenceContext
     private EntityManager entityManager;
 
-    public BasicJPQLQueries(DoctorRepository doctorRepository, PatientRepository patientRepository, PersonRepository personRepository, MedicalRecordRepository medicalRecordRepository) {
+    public DataInitializer(DoctorRepository doctorRepository, PatientRepository patientRepository, PersonRepository personRepository, MedicalRecordRepository medicalRecordRepository, QueryParameters queryParameters, LearnQueries learnQueries) {
         this.doctorRepository = doctorRepository;
         this.patientRepository = patientRepository;
         this.personRepository = personRepository;
         this.medicalRecordRepository = medicalRecordRepository;
+        this.queryParameters = queryParameters;
+        this.learnQueries = learnQueries;
     }
 
     @Override
@@ -69,25 +73,15 @@ public class BasicJPQLQueries implements CommandLineRunner {
         );
         patientRepository.save(alice);
 
+        Patient alice1 = new Patient(
+                "Alice1",
+                33,
+                "alice@email.com",
+                Gender.FEMALE
+        );
+        patientRepository.save(alice1);
 
-        // JPQL QUERIES
-        List<Patient> patients = entityManager.createQuery(
-                "SELECT p FROM Patient p", Patient.class
-        ).getResultList();
-
-        System.out.println("Patients: " + patients.size());
-        for (Patient p : patients)
-            System.out.println("Patient Name: " + p.getName());
-
-        // FILTERING
-        List<Patient> malePatients = entityManager.createQuery(
-                "SELECT p FROM Patient p WHERE p.gender = :gender",
-                Patient.class
-        ).setParameter("gender", Gender.MALE)
-                .getResultList();
-
-        System.out.println("MALE Patients: " + malePatients.size());
-        for (Patient p : malePatients)
-            System.out.println("MALE Patient Name: " + p.getName());
+//        queryParameters.execute(entityManager);
+        learnQueries.execute(entityManager);
     }
 }

@@ -9,6 +9,10 @@ import java.util.List;
 
 @Entity
 //@Table(name = "new_patients")
+@NamedQuery(
+        name = "Patient.findByNameStartingWith",
+        query = "SELECT p FROM Patient p WHERE p.name NOT LIKE :prefix"
+)
 public class Patient extends Person{
 
     @Embedded
